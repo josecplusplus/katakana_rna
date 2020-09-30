@@ -7,7 +7,7 @@ from keras.datasets import mnist
 def usage():
     print('''
     Usage: 
-        python3 katakana.py $cantidadRepartidores $radioEntrega $tiempoFinal [debug]
+        python3 katakana.py
 
     '''
     )

@@ -44,61 +44,23 @@ def main():
     # split the images/labels to train and test
     train_images, test_images, train_labels, test_labels = train_test_split(train_images, train_labels, test_size=0.2)
 
-    #np.savez_compressed("katakana_train_images.npz", train_images)
-    #np.savez_compressed("katakana_train_labels.npz", train_labels)
-    #np.savez_compressed("katakana_test_images.npz", test_images)
-    #np.savez_compressed("katakana_test_labels.npz", test_labels)    
-        
-    
     # Size of image(width)
     n_side = 48
     
     # No of neurons
     n_neurons = n_side * n_side
-    w = train(n_neurons, train_images)
+    print("Entrenando red...")
+    W = train(n_neurons, train_images)
     
 
-    # TODO ejecutar tests
+    # Test
+    print("Testeando...")
+    accuracy, op_imgs = test(W, test_images)
 
+    # Resultados
+    print("La precision de la red es %f" % (accuracy * 100))
 
-    # TODO evaluar resultados
     
-    
-    
-    
-    # load data
-#    (X_train, y_train), (X_test, y_test) = mnist.load_data()    
-    
-    
-    # flatten 28*28 images to a 784 vector for each image
-#    num_pixels = X_train.shape[1] * X_train.shape[2]
-#    X_train = X_train.reshape((X_train.shape[0], num_pixels)).astype('float32')
-#    X_test = X_test.reshape((X_test.shape[0], num_pixels)).astype('float32')    
-    
-    # normalize inputs from 0-255 to 0-1
-#    X_train = X_train / 255
-#    X_test = X_test / 255    
-
-    # one hot encode outputs
-#    y_train = np_utils.to_categorical(y_train)
-#    y_test = np_utils.to_categorical(y_test)
-#    num_classes = y_test.shape[1]
-
-
-
-
-    # define baseline model
-#    def baseline_model():
-        # create model
-#        model = Sequential()
-#        model.add(Dense(num_pixels, input_dim=num_pixels, kernel_initializer='normal', activation='relu'))
-#        model.add(Dense(num_classes, kernel_initializer='normal', activation='softmax'))
-        # Compile model
-#        model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-#        return model
-        
-    # build the model
-#    model = baseline_model()
     # Fit the model
 #    model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=200, verbose=2)
     # Final evaluation of the model
@@ -138,7 +100,36 @@ def train(neu, training_data):
         w[diag][diag] = 0
     return w
 
+
+# Function to test the network
+def test(weights, testing_data):
+    success = 0.0
+
+    output_data = []
+
+    for data in testing_data:
+        true_data = data[0]
+        noisy_data = data[1]
+        predicted_data = retrieve_pattern(weights, noisy_data)
+        if np.array_equal(true_data, predicted_data):
+            success += 1.0
+        output_data.append([true_data, noisy_data, predicted_data])
+
+    return (success / len(testing_data)), output_data
         
+
+# Function to retrieve individual noisy patterns
+def retrieve_pattern(weights, data, steps=10):
+    res = np.array(data)
+
+    for _ in range(steps):
+        for i in range(len(res)):
+            raw_v = np.dot(weights[i], res)
+            if raw_v > 0:
+                res[i] = 1
+            else:
+                res[i] = -1
+    return res
 
 if __name__ == "__main__":
     try: 

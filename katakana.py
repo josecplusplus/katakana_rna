@@ -53,12 +53,21 @@ def main():
     # TODO hacer el training!
     
     # Size of image(width)
+<<<<<<< HEAD
     n_side = 48 #FIXME
     
     # No of neurons
     n_neurons = n_side * n_side
     w = train(n_neurons, train_images)
     
+=======
+    n_side = 63 #FIXME
+    
+    # No of neurons
+    n_neurons = n_side * n_side
+    w = train(n_neurons, train_images)
+    
+>>>>>>> b4072bac636d019f092602117d58b2d9f6037d84
 
     # TODO ejecutar tests
 

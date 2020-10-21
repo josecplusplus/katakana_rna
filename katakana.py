@@ -13,6 +13,9 @@ from sklearn.model_selection import train_test_split
 
 import numpy as np
 
+import traceback 
+import sys 
+
 def usage():
     print('''
     Usage: 
@@ -112,7 +115,11 @@ def test(weights, testing_data):
     for data in testing_data:
         true_data = data[0]
         noisy_data = data[1]
+        
+        # Utilizando la matriz W, ingreso con el pattern a reconocer
         predicted_data = retrieve_pattern(weights, noisy_data)
+        
+        # Comparo el pattern obtenido con el que deberia ser
         if np.array_equal(true_data, predicted_data):
             success += 1.0
         output_data.append([true_data, noisy_data, predicted_data])
@@ -152,6 +159,5 @@ def retrieve_pattern(weights, data, steps=10):
 if __name__ == "__main__":
     try: 
         main()
-    except ValueError:
-        print ("ERROR!:")
-        print (ValueError)
+    except: 
+        traceback.print_exception(*sys.exc_info())         

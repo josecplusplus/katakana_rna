@@ -85,7 +85,15 @@ def read_kana():
                         pass
     np.savez_compressed("kana.npz", katakana)
     
-    
+# El entrenamiento es el producto exterior
+# entre un vector de entrada y su transpuesta,
+# da como resultado la matriz de pesos W cuya
+# diagonal son ceros
+# En cada entrenamiento se va sumando la matriz
+# W obtenida a la W del entrenamiento anterior
+#
+# neu: cantidad de elementos de cada vector de entrada
+# training data: vector de vectores de datos de entrada
 def train(neu, training_data):
     w = np.zeros([neu, neu])
     for data in training_data:

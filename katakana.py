@@ -50,10 +50,8 @@ def main():
     #np.savez_compressed("katakana_test_labels.npz", test_labels)    
         
     
-    # TODO hacer el training!
-    
     # Size of image(width)
-    n_side = 48 #FIXME
+    n_side = 48
     
     # No of neurons
     n_neurons = n_side * n_side

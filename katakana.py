@@ -55,18 +55,12 @@ def main():
 
     # Test
     print("Testeando...")
-    accuracy, op_imgs = test(W, test_images)
+    #accuracy, op_imgs = test(W, test_images)
+    accuracy, op_imgs = test2(W, test_images, train_images)
 
     # Resultados
     print("La precision de la red es %f" % (accuracy * 100))
 
-    
-    # Fit the model
-#    model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=200, verbose=2)
-    # Final evaluation of the model
-#    scores = model.evaluate(X_test, y_test, verbose=0)
-#    print("Baseline Error: %.2f%%" % (100-scores[1]*100))        
-        
         
 def read_record_ETL1G(f):
     s = f.read(2052)
@@ -117,6 +111,22 @@ def test(weights, testing_data):
 
     return (success / len(testing_data)), output_data
         
+# Function to test the network
+def test2(weights, testing_data, true_data):
+    success = 0.0
+
+    output_data = []
+
+    for data in testing_data:
+        true_data = true_data[0]
+        noisy_data = testing_data[0]
+        predicted_data = retrieve_pattern(weights, noisy_data)
+        if np.array_equal(true_data, predicted_data):
+            success += 1.0
+        output_data.append([true_data, noisy_data, predicted_data])
+
+    return (success / len(testing_data)), output_data
+        
 
 # Function to retrieve individual noisy patterns
 def retrieve_pattern(weights, data, steps=10):
@@ -135,4 +145,5 @@ if __name__ == "__main__":
     try: 
         main()
     except ValueError:
-        print ("ERROR!")
+        print ("ERROR!:")
+        print (ValueError)

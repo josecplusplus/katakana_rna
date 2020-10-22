@@ -52,11 +52,6 @@ def main():
 			0,0,1,0,0,0,1,0,
 			0,0,0,0,0,0,0,0]
     
-    #ka = convert_array(ka)
-    #ki = convert_array(ki)
-    #ku = convert_array(ku)
-    #ke = convert_array(ke)
-    
     train_images = [ka, ki, ku, ke]
 
     # Size of image(width)
@@ -75,16 +70,11 @@ def main():
     # son los caracteres originales, y las impares
     # son los caracteres con ruido
     
-    #noisy_ka = add_noise(ka.copy())
-    #noisy_ki = add_noise(ki.copy())
-    #noisy_ku = add_noise(ku.copy())
-    #noisy_ke = add_noise(ke.copy())
-    
-    noisy_ka = ka.copy()
-    noisy_ki = ki.copy()
-    noisy_ku = ku.copy()
-    noisy_ke = ke.copy()
-    
+    noisy_ka = add_noise(ka.copy())
+    noisy_ki = add_noise(ki.copy())
+    noisy_ku = add_noise(ku.copy())
+    noisy_ke = add_noise(ke.copy())
+        
     test_images = [[ka, noisy_ka], [ki, noisy_ki], [ku, noisy_ku], [ke, noisy_ke]]
     
     accuracy, op_imgs = test(W, test_images)
@@ -129,14 +119,17 @@ def test(weights, testing_data):
         predicted_data = convert_zero(retrieve_pattern(weights, noisy_data))
         
         # Comparo el pattern obtenido con el que deberia ser
-        #print("**************");
-        #print("Esperado:")
-        #print(true_data)
-        #print("Obtenido:")
-        #print(predicted_data)
-        #print("**************");
+        print("**************");
+        print("Con ruido:")
+        print(noisy_data)
+        print("Esperado:")
+        print(true_data)
+        print("Obtenido:")
+        print(predicted_data)
+        print("**************");
         if np.array_equal(true_data, predicted_data):
             success += 1.0
+            print("=>Eureka!")
         output_data.append([true_data, noisy_data, predicted_data])
 
     return (success / len(testing_data)), output_data
@@ -159,15 +152,19 @@ def convert_zero(a):
     ca = [0 if x==-1 else 1 for x in a]
     return ca
 
+# TODO generar ruido aleatorio
 def add_noise(a):
     #for i in range(len(a)):
     #    if (i % 11) == 0:
     #        a[i] = 0
+    a[1] = -1
+    a[2] = -1
+    a[3] = -1
     a[11] = -1
     a[17] = -1
     a[20] = -1
     
-    return 
+    return a
 
 if __name__ == "__main__":
     try: 

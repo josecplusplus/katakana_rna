@@ -1,92 +1,92 @@
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import Dropout
-from keras.utils import np_utils
-from keras.datasets import mnist
-
-import struct
-from PIL import Image
 import numpy as np
-
-import skimage.transform
-from sklearn.model_selection import train_test_split
-
-import numpy as np
-
 import traceback 
 import sys 
-
-def usage():
-    print('''
-    Usage: 
-        python3 katakana.py
-
-    '''
-    )
+import datetime
 
 
 def main():
-    # Cargar datasets ETL1C-07 a ETL1C-13
-    read_kana()
 
-    # Transformar
-    kana = np.load("kana.npz")['arr_0'].reshape([-1, 63, 64]).astype(np.float32)
-    kana = kana/np.max(kana) # make the numbers range from 0 to 1
+    print("[LOG] Creando set de caracteres - " , datetime.datetime.now())    
+    
+    # Creo bitmaps de 64 bits
+    
+    # Bitmaps obtenidos de https://www.thingiverse.com/thing:10195/files
 
-    # 51 is the number of different katakana (3 are duplicates so in the end there are 48 classes), 1411 writers.
-    train_images = np.zeros([51 * 1411, 48, 48], dtype=np.float32)
+    # Caracter "ka"
+    ka = [  0,0,0,0,0,0,0,0,
+			0,0,1,0,0,0,0,0,
+			0,1,1,1,1,1,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,0,0,0,0,0,0]
 
-    for i in range(51 * 1411): # change the image size to 48*48
-        train_images[i] = skimage.transform.resize(kana[i], (48, 48))
+    # Caracter "ki"
+    ki = [  0,0,0,0,0,0,0,0,
+			0,0,1,0,0,0,0,0,
+			0,1,1,1,1,1,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,0,0,0,0,0,0]
 
-    arr = np.arange(51) # create labels
-    train_labels = np.repeat(arr, 1411)
-
-    # In the actual code, I combined the duplicate classes here and had 48 classes in the end
-
-    # split the images/labels to train and test
-    train_images, test_images, train_labels, test_labels = train_test_split(train_images, train_labels, test_size=0.2)
+    # Caracter "ku"
+    ku = [  0,0,0,0,0,0,0,0,
+			0,0,1,0,0,0,0,0,
+			0,1,1,1,1,1,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,0,0,0,0,0,0]
+    
+    # Caracter "ke"
+    ke = [  0,0,0,0,0,0,0,0,
+			0,0,1,0,0,0,0,0,
+			0,1,1,1,1,1,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,1,0,0,0,1,0,
+			0,0,0,0,0,0,0,0]
+    
+    
+    train_images = [ka, ki, ku, ke]
 
     # Size of image(width)
-    n_side = 48
+    n_side = 8
+    
+    print("[LOG] Training -        " , datetime.datetime.now())    
     
     # No of neurons
     n_neurons = n_side * n_side
-    print("Entrenando red...")
     W = train(n_neurons, train_images)
     
-
     # Test
-    print("Testeando...")
-    #accuracy, op_imgs = test(W, test_images)
-    accuracy, op_imgs = test2(W, test_images, train_images)
+    print("[LOG] Testing -         " , datetime.datetime.now())    
+
+    # Creo un set de datos, donde las posiciones pares 
+    # son los caracteres originales, y las impares
+    # son los caracteres con ruido
+    
+    noisy_ka = ka.copy()
+    noisy_ki = ki.copy()
+    noisy_ku = ku.copy()
+    noisy_ke = ke.copy()
+    
+    
+    test_images = [[ka, noisy_ka], [ki, noisy_ki], [ku, noisy_ku], [ke, noisy_ke]]
+    
+    accuracy, op_imgs = test(W, test_images)
 
     # Resultados
-    print("La precision de la red es %f" % (accuracy * 100))
+    print("[LOG] La precision de la red es %f" % (accuracy * 100))
+    return
 
-        
-def read_record_ETL1G(f):
-    s = f.read(2052)
-    r = struct.unpack('>H2sH6BI4H4B4x2016s4x', s)
-    iF = Image.frombytes('F', (64, 63), r[18], 'bit', 4)
-    iL = iF.convert('P')
-    return r + (iL,)
+       
 
-def read_kana():
-    katakana = np.zeros([51, 1411, 63, 64], dtype=np.uint8) # 51 characters, 1411 writers, img size = 63*64
-    for i in range(7,14):
-        filename = 'ETL1/ETL1C_{:02d}'.format(i)
-        with open(filename, 'rb') as f: # file 13 only has 3 characters, others have 8 characters
-            if i!=13: limit = 8
-            else: limit=3
-            for dataset in range(limit):
-                for j in range(1411):
-                    try :
-                        r = read_record_ETL1G(f)
-                        katakana[(i - 7) * 8 + dataset, j] = np.array(r[-1])
-                    except struct.error: # two imgs are blank according to the ETL website, so this prevents any errors
-                        pass
-    np.savez_compressed("kana.npz", katakana)
     
 # El entrenamiento es el producto exterior
 # entre un vector de entrada y su transpuesta,
@@ -126,22 +126,6 @@ def test(weights, testing_data):
 
     return (success / len(testing_data)), output_data
         
-# Function to test the network
-def test2(weights, testing_data, true_data):
-    success = 0.0
-
-    output_data = []
-
-    for data in testing_data:
-        true_data = true_data[0]
-        noisy_data = testing_data[0]
-        predicted_data = retrieve_pattern(weights, noisy_data)
-        if np.array_equal(true_data, predicted_data):
-            success += 1.0
-        output_data.append([true_data, noisy_data, predicted_data])
-
-    return (success / len(testing_data)), output_data
-        
 
 # Function to retrieve individual noisy patterns
 def retrieve_pattern(weights, data, steps=10):
@@ -161,3 +145,4 @@ if __name__ == "__main__":
         main()
     except: 
         traceback.print_exception(*sys.exc_info())         
+        print("[LOG] Error -           " , datetime.datetime.now())         

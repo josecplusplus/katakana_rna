@@ -4,3 +4,4 @@ pip install Keras
 pip install --upgrade tensorflow
 pip install scikit-image
 pip install sklearn
+pip install bitmap

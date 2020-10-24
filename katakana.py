@@ -49820,13 +49820,13 @@ def test(weights, testing_data):
         
         # Comparo el pattern obtenido con el que deberia ser
         print("**************");
-         print("Con ruido:")
-         print(noisy_data)
-         print("Esperado:")
-         print(true_data)
-         print("Obtenido:")
-         print(predicted_data)
-         print("**************");
+        print("Con ruido:")
+        print(noisy_data)
+        print("Esperado:")
+        print(true_data)
+        print("Obtenido:")
+        print(predicted_data)
+        print("**************");
         if np.array_equal(true_data, predicted_data):
             success += 1.0
             print("=>Eureka!")

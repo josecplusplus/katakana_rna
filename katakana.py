@@ -76,11 +76,10 @@ def train(neu, training_data):
 
 #    print("Matriz de pesos:")
 #    for row in w:
-#        for val in row:
-#            print(val)
-#        print
-
-    return w
+#            print(row)
+#            print("--------------")
+    # FIXME harcode!
+    return w/4096
 
 
 # Function to test the network
@@ -113,8 +112,8 @@ def retrieve_pattern(weights, pattern, steps=10):
     #res = flatten(pattern)
     res = pattern
 
-    print("res length = " + str(len(res)))
-    print("weights length = " + str(len(weights)))
+    #print("res length = " + str(len(res)))
+    #print("weights length = " + str(len(weights)))
     for _ in tqdm(range(steps)):
         for i in range(len(res)):
             raw_v = np.dot(weights[i], res)

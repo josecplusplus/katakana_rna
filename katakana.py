@@ -124,9 +124,8 @@ def retrieve_pattern(weights, pattern, steps=10):
     return res
     
 def convert_to_binary(a):
-    ca = [1 if x==1 else 0 for x in a]
-    #ca = [1 if x==1 else x for x in a]
-    #ca = [0 if x==-1 else x for x in a]
+    #ca = [1 if x==1 else 0 for x in a]
+    ca = [1 if x==True else 0 for x in a]
     return ca
 
 def convert_to_bipolar(a):

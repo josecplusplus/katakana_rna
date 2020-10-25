@@ -1,16 +1,5 @@
-# TODO generar ruido aleatorio
-def add_noise(a):
-    #for i in range(len(a)):
-    #    if (i % 11) == 0:
-    #        a[i] = 0
-    a[1] = -1
-    #a[2] = -1
-    a[3] = -1
-    #a[11] = -1
-    #a[17] = -1
-    #a[20] = -1
-    
-    return a
+test_images = []
+train_images = []
 
 
 # ----------------------
@@ -49652,113 +49641,137 @@ c127=[
 #    c096, c097, c098, c099, c100, c101, c102, c103, c104, c105, c106, c107, c108, c109, c110, c111, 
 #    c112, c113, c114, c115, c116, c117, c118, c119, c120, c121, c122, c123, c124, c125, c126, c127]
 
-# train_images=[c032, c033, c034, c035, c036, c037, c038, c039, c040, c041, c042, c043, c044, c045, c046]
+#train_images=[c032, c033, c034, c035, c036, c037, c038, c039, c040, c041, c042, c043, c044, c045, c046]
 # train_images=[c032, c033, c034, c035, c036, c037, c038, c039]
 #train_images=[c066, c067]
 
-train_images=[c066, c067, c068, c069,c066, c067, c068, c069,c066, c067, c068, c069,c066, c067, c068, c069,c066, c067, c068, c069]
 
 
-noisy_c032 = add_noise(c032.copy())
-noisy_c033 = add_noise(c033.copy())
-noisy_c034 = add_noise(c034.copy())
-noisy_c035 = add_noise(c035.copy())
-noisy_c036 = add_noise(c036.copy())
-noisy_c037 = add_noise(c037.copy())
-noisy_c038 = add_noise(c038.copy())
-noisy_c039 = add_noise(c039.copy())
-noisy_c040 = add_noise(c040.copy())
-noisy_c041 = add_noise(c041.copy())
-noisy_c042 = add_noise(c042.copy())
-noisy_c043 = add_noise(c043.copy())
-noisy_c044 = add_noise(c044.copy())
-noisy_c045 = add_noise(c045.copy())
-noisy_c046 = add_noise(c046.copy())
-noisy_c047 = add_noise(c047.copy())
-noisy_c048 = add_noise(c048.copy())
-noisy_c049 = add_noise(c049.copy())
-noisy_c050 = add_noise(c050.copy())
-noisy_c051 = add_noise(c051.copy())
-noisy_c052 = add_noise(c052.copy())
-noisy_c053 = add_noise(c053.copy())
-noisy_c054 = add_noise(c054.copy())
-noisy_c055 = add_noise(c055.copy())
-noisy_c056 = add_noise(c056.copy())
-noisy_c057 = add_noise(c057.copy())
-noisy_c058 = add_noise(c058.copy())
-noisy_c059 = add_noise(c059.copy())
-noisy_c060 = add_noise(c060.copy())
-noisy_c061 = add_noise(c061.copy())
-noisy_c062 = add_noise(c062.copy())
-noisy_c063 = add_noise(c063.copy())
-noisy_c064 = add_noise(c064.copy())
-noisy_c065 = add_noise(c065.copy())
-noisy_c066 = add_noise(c066.copy())
-noisy_c067 = add_noise(c067.copy())
-noisy_c068 = add_noise(c068.copy())
-noisy_c069 = add_noise(c069.copy())
-noisy_c070 = add_noise(c070.copy())
-noisy_c071 = add_noise(c071.copy())
-noisy_c072 = add_noise(c072.copy())
-noisy_c073 = add_noise(c073.copy())
-noisy_c074 = add_noise(c074.copy())
-noisy_c075 = add_noise(c075.copy())
-noisy_c076 = add_noise(c076.copy())
-noisy_c077 = add_noise(c077.copy())
-noisy_c078 = add_noise(c078.copy())
-noisy_c079 = add_noise(c079.copy())
-noisy_c080 = add_noise(c080.copy())
-noisy_c081 = add_noise(c081.copy())
-noisy_c082 = add_noise(c082.copy())
-noisy_c083 = add_noise(c083.copy())
-noisy_c084 = add_noise(c084.copy())
-noisy_c085 = add_noise(c085.copy())
-noisy_c086 = add_noise(c086.copy())
-noisy_c087 = add_noise(c087.copy())
-noisy_c088 = add_noise(c088.copy())
-noisy_c089 = add_noise(c089.copy())
-noisy_c090 = add_noise(c090.copy())
-noisy_c091 = add_noise(c091.copy())
-noisy_c092 = add_noise(c092.copy())
-noisy_c093 = add_noise(c093.copy())
-noisy_c094 = add_noise(c094.copy())
-noisy_c095 = add_noise(c095.copy())
-noisy_c096 = add_noise(c096.copy())
-noisy_c097 = add_noise(c097.copy())
-noisy_c098 = add_noise(c098.copy())
-noisy_c099 = add_noise(c099.copy())
-noisy_c100 = add_noise(c100.copy())
-noisy_c101 = add_noise(c101.copy())
-noisy_c102 = add_noise(c102.copy())
-noisy_c103 = add_noise(c103.copy())
-noisy_c104 = add_noise(c104.copy())
-noisy_c105 = add_noise(c105.copy())
-noisy_c106 = add_noise(c106.copy())
-noisy_c107 = add_noise(c107.copy())
-noisy_c108 = add_noise(c108.copy())
-noisy_c109 = add_noise(c109.copy())
-noisy_c110 = add_noise(c110.copy())
-noisy_c111 = add_noise(c111.copy())
-noisy_c112 = add_noise(c112.copy())
-noisy_c113 = add_noise(c113.copy())
-noisy_c114 = add_noise(c114.copy())
-noisy_c115 = add_noise(c115.copy())
-noisy_c116 = add_noise(c116.copy())
-noisy_c117 = add_noise(c117.copy())
-noisy_c118 = add_noise(c118.copy())
-noisy_c119 = add_noise(c119.copy())
-noisy_c120 = add_noise(c120.copy())
-noisy_c121 = add_noise(c121.copy())
-noisy_c122 = add_noise(c122.copy())
-noisy_c123 = add_noise(c123.copy())
-noisy_c124 = add_noise(c124.copy())
-noisy_c125 = add_noise(c125.copy())
-noisy_c126 = add_noise(c126.copy())
-noisy_c127 = add_noise(c127.copy())
-test_images=[[c032, noisy_c032], [c033, noisy_c033], [c034, noisy_c034], [c035, noisy_c035], [c036, noisy_c036], [c037, noisy_c037], [c038, noisy_c038], [c039, noisy_c039], [c040, noisy_c040], [c041, noisy_c041], [c042, noisy_c042], [c043, noisy_c043], [c044, noisy_c044], [c045, noisy_c045], [c046, noisy_c046], [c047, noisy_c047], 
-[c048, noisy_c048], [c049, noisy_c049], [c050, noisy_c050], [c051, noisy_c051], [c052, noisy_c052], [c053, noisy_c053], [c054, noisy_c054], [c055, noisy_c055], [c056, noisy_c056], [c057, noisy_c057], [c058, noisy_c058], [c059, noisy_c059], [c060, noisy_c060], [c061, noisy_c061], [c062, noisy_c062], [c063, noisy_c063], 
-[c064, noisy_c064], [c065, noisy_c065], [c066, noisy_c066], [c067, noisy_c067], [c068, noisy_c068], [c069, noisy_c069], [c070, noisy_c070], [c071, noisy_c071], [c072, noisy_c072], [c073, noisy_c073], [c074, noisy_c074], [c075, noisy_c075], [c076, noisy_c076], [c077, noisy_c077], [c078, noisy_c078], [c079, noisy_c079], 
-[c080, noisy_c080], [c081, noisy_c081], [c082, noisy_c082], [c083, noisy_c083], [c084, noisy_c084], [c085, noisy_c085], [c086, noisy_c086], [c087, noisy_c087], [c088, noisy_c088], [c089, noisy_c089], [c090, noisy_c090], [c091, noisy_c091], [c092, noisy_c092], [c093, noisy_c093], [c094, noisy_c094], [c095, noisy_c095], 
-[c096, noisy_c096], [c097, noisy_c097], [c098, noisy_c098], [c099, noisy_c099], [c100, noisy_c100], [c101, noisy_c101], [c102, noisy_c102], [c103, noisy_c103], [c104, noisy_c104], [c105, noisy_c105], [c106, noisy_c106], [c107, noisy_c107], [c108, noisy_c108], [c109, noisy_c109], [c110, noisy_c110], [c111, noisy_c111], 
-[c112, noisy_c112], [c113, noisy_c113], [c114, noisy_c114], [c115, noisy_c115], [c116, noisy_c116], [c117, noisy_c117], [c118, noisy_c118], [c119, noisy_c119], [c120, noisy_c120], [c121, noisy_c121], [c122, noisy_c122], [c123, noisy_c123], [c124, noisy_c124], [c125, noisy_c125], [c126, noisy_c126], [c127, noisy_c127]]
+# Creo un set de datos, donde las posiciones pares 
+# son los caracteres originales, y las impares
+# son los caracteres con ruido
 
+def init_test_images():
+    noisy_c032 = add_noise(c032.copy())
+    noisy_c033 = add_noise(c033.copy())
+    noisy_c034 = add_noise(c034.copy())
+    noisy_c035 = add_noise(c035.copy())
+    noisy_c036 = add_noise(c036.copy())
+    noisy_c037 = add_noise(c037.copy())
+    noisy_c038 = add_noise(c038.copy())
+    noisy_c039 = add_noise(c039.copy())
+    noisy_c040 = add_noise(c040.copy())
+    noisy_c041 = add_noise(c041.copy())
+    noisy_c042 = add_noise(c042.copy())
+    noisy_c043 = add_noise(c043.copy())
+    noisy_c044 = add_noise(c044.copy())
+    noisy_c045 = add_noise(c045.copy())
+    noisy_c046 = add_noise(c046.copy())
+    noisy_c047 = add_noise(c047.copy())
+    noisy_c048 = add_noise(c048.copy())
+    noisy_c049 = add_noise(c049.copy())
+    noisy_c050 = add_noise(c050.copy())
+    noisy_c051 = add_noise(c051.copy())
+    noisy_c052 = add_noise(c052.copy())
+    noisy_c053 = add_noise(c053.copy())
+    noisy_c054 = add_noise(c054.copy())
+    noisy_c055 = add_noise(c055.copy())
+    noisy_c056 = add_noise(c056.copy())
+    noisy_c057 = add_noise(c057.copy())
+    noisy_c058 = add_noise(c058.copy())
+    noisy_c059 = add_noise(c059.copy())
+    noisy_c060 = add_noise(c060.copy())
+    noisy_c061 = add_noise(c061.copy())
+    noisy_c062 = add_noise(c062.copy())
+    noisy_c063 = add_noise(c063.copy())
+    noisy_c064 = add_noise(c064.copy())
+    noisy_c065 = add_noise(c065.copy())
+    noisy_c066 = add_noise(c066.copy())
+    noisy_c067 = add_noise(c067.copy())
+    noisy_c068 = add_noise(c068.copy())
+    noisy_c069 = add_noise(c069.copy())
+    noisy_c070 = add_noise(c070.copy())
+    noisy_c071 = add_noise(c071.copy())
+    noisy_c072 = add_noise(c072.copy())
+    noisy_c073 = add_noise(c073.copy())
+    noisy_c074 = add_noise(c074.copy())
+    noisy_c075 = add_noise(c075.copy())
+    noisy_c076 = add_noise(c076.copy())
+    noisy_c077 = add_noise(c077.copy())
+    noisy_c078 = add_noise(c078.copy())
+    noisy_c079 = add_noise(c079.copy())
+    noisy_c080 = add_noise(c080.copy())
+    noisy_c081 = add_noise(c081.copy())
+    noisy_c082 = add_noise(c082.copy())
+    noisy_c083 = add_noise(c083.copy())
+    noisy_c084 = add_noise(c084.copy())
+    noisy_c085 = add_noise(c085.copy())
+    noisy_c086 = add_noise(c086.copy())
+    noisy_c087 = add_noise(c087.copy())
+    noisy_c088 = add_noise(c088.copy())
+    noisy_c089 = add_noise(c089.copy())
+    noisy_c090 = add_noise(c090.copy())
+    noisy_c091 = add_noise(c091.copy())
+    noisy_c092 = add_noise(c092.copy())
+    noisy_c093 = add_noise(c093.copy())
+    noisy_c094 = add_noise(c094.copy())
+    noisy_c095 = add_noise(c095.copy())
+    noisy_c096 = add_noise(c096.copy())
+    noisy_c097 = add_noise(c097.copy())
+    noisy_c098 = add_noise(c098.copy())
+    noisy_c099 = add_noise(c099.copy())
+    noisy_c100 = add_noise(c100.copy())
+    noisy_c101 = add_noise(c101.copy())
+    noisy_c102 = add_noise(c102.copy())
+    noisy_c103 = add_noise(c103.copy())
+    noisy_c104 = add_noise(c104.copy())
+    noisy_c105 = add_noise(c105.copy())
+    noisy_c106 = add_noise(c106.copy())
+    noisy_c107 = add_noise(c107.copy())
+    noisy_c108 = add_noise(c108.copy())
+    noisy_c109 = add_noise(c109.copy())
+    noisy_c110 = add_noise(c110.copy())
+    noisy_c111 = add_noise(c111.copy())
+    noisy_c112 = add_noise(c112.copy())
+    noisy_c113 = add_noise(c113.copy())
+    noisy_c114 = add_noise(c114.copy())
+    noisy_c115 = add_noise(c115.copy())
+    noisy_c116 = add_noise(c116.copy())
+    noisy_c117 = add_noise(c117.copy())
+    noisy_c118 = add_noise(c118.copy())
+    noisy_c119 = add_noise(c119.copy())
+    noisy_c120 = add_noise(c120.copy())
+    noisy_c121 = add_noise(c121.copy())
+    noisy_c122 = add_noise(c122.copy())
+    noisy_c123 = add_noise(c123.copy())
+    noisy_c124 = add_noise(c124.copy())
+    noisy_c125 = add_noise(c125.copy())
+    noisy_c126 = add_noise(c126.copy())
+    noisy_c127 = add_noise(c127.copy())
+
+    test_images=[[c032, noisy_c032], [c033, noisy_c033], [c034, noisy_c034], [c035, noisy_c035], [c036, noisy_c036], [c037, noisy_c037], [c038, noisy_c038], [c039, noisy_c039], [c040, noisy_c040], [c041, noisy_c041], [c042, noisy_c042], [c043, noisy_c043], [c044, noisy_c044], [c045, noisy_c045], [c046, noisy_c046], [c047, noisy_c047], 
+    [c048, noisy_c048], [c049, noisy_c049], [c050, noisy_c050], [c051, noisy_c051], [c052, noisy_c052], [c053, noisy_c053], [c054, noisy_c054], [c055, noisy_c055], [c056, noisy_c056], [c057, noisy_c057], [c058, noisy_c058], [c059, noisy_c059], [c060, noisy_c060], [c061, noisy_c061], [c062, noisy_c062], [c063, noisy_c063], 
+    [c064, noisy_c064], [c065, noisy_c065], [c066, noisy_c066], [c067, noisy_c067], [c068, noisy_c068], [c069, noisy_c069], [c070, noisy_c070], [c071, noisy_c071], [c072, noisy_c072], [c073, noisy_c073], [c074, noisy_c074], [c075, noisy_c075], [c076, noisy_c076], [c077, noisy_c077], [c078, noisy_c078], [c079, noisy_c079], 
+    [c080, noisy_c080], [c081, noisy_c081], [c082, noisy_c082], [c083, noisy_c083], [c084, noisy_c084], [c085, noisy_c085], [c086, noisy_c086], [c087, noisy_c087], [c088, noisy_c088], [c089, noisy_c089], [c090, noisy_c090], [c091, noisy_c091], [c092, noisy_c092], [c093, noisy_c093], [c094, noisy_c094], [c095, noisy_c095], 
+    [c096, noisy_c096], [c097, noisy_c097], [c098, noisy_c098], [c099, noisy_c099], [c100, noisy_c100], [c101, noisy_c101], [c102, noisy_c102], [c103, noisy_c103], [c104, noisy_c104], [c105, noisy_c105], [c106, noisy_c106], [c107, noisy_c107], [c108, noisy_c108], [c109, noisy_c109], [c110, noisy_c110], [c111, noisy_c111], 
+    [c112, noisy_c112], [c113, noisy_c113], [c114, noisy_c114], [c115, noisy_c115], [c116, noisy_c116], [c117, noisy_c117], [c118, noisy_c118], [c119, noisy_c119], [c120, noisy_c120], [c121, noisy_c121], [c122, noisy_c122], [c123, noisy_c123], [c124, noisy_c124], [c125, noisy_c125], [c126, noisy_c126], [c127, noisy_c127]]
+
+    return test_images
+
+def init_train_images():
+    train_images=[c066, c067, c068, c069,c066, c067, c068, c069,c066, c067, c068, c069,c066, c067, c068, c069,c066, c067, c068, c069]
+    return train_images
+    
+# TODO generar ruido aleatorio
+def add_noise(a):
+    #for i in range(len(a)):
+    #    if (i % 11) == 0:
+    #        a[i] = 0
+    #a[1] = 1
+    #a[2] = -1
+    #a[3] = 1
+    #a[11] = -1
+    #a[17] = 1
+    #a[20] = -1
+    
+    return a

@@ -24,9 +24,11 @@ def get_test_set():
             train_image = Image.open(train_path + filename)
             test_image = Image.open(test_path + filename)
             train_data = np.asarray(train_image)
-            #train_data = flatten(train_image)
+            train_data = flatten(train_data)
+            train_data = boolean_to_binary(train_data)
             test_data = np.asarray(test_image)
-            #test_data = flatten(test_image)
+            test_data = flatten(test_data)
+            test_data = boolean_to_binary(test_data)
             test_set.append([train_data, test_data])
     return test_set
 
@@ -38,7 +40,8 @@ def load_from_disk(path, images_array):
             image = Image.open(train_path + filename)
             print("Loading " + train_path + filename + " Size:" + str(image.size))
             data = np.asarray(image)
-            #data = flatten(image)
+            data = flatten(data)
+            data = boolean_to_binary(data)
             images_array.append(data)
     return images_array
     
@@ -52,3 +55,7 @@ def flatten(m):
         for p in o:
             flat_pattern.append(p)       
     return np.array(flat_pattern)
+    
+def boolean_to_binary(a):
+    ca = [1 if x==True else 0 for x in a]
+    return ca

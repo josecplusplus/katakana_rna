@@ -31,10 +31,10 @@ def main():
     
     
 
-#    print("=>c032:")
-#    print(train_images[0])
-#    print("=>noisy_c032:")
-#    print(test_images[0][0])
+    print("=>c032:")
+    print(train_images[0])
+    print("=>noisy_c032:")
+    print(test_images[0][0])
     
     
     print("[LOG] Training -        " , datetime.datetime.now())    
@@ -110,7 +110,8 @@ def test(weights, testing_data):
 
 # Function to retrieve individual noisy patterns
 def retrieve_pattern(weights, pattern, steps=10):
-    res = flatten(pattern)
+    #res = flatten(pattern)
+    res = pattern
 
     print("res length = " + str(len(res)))
     print("weights length = " + str(len(weights)))
@@ -128,9 +129,6 @@ def convert_to_binary(a):
     ca = [1 if x==True else 0 for x in a]
     return ca
 
-def convert_to_bipolar(a):
-    ca = [1 if x==1 else -1 for x in a]
-    return ca
 
 def check(item):
     res = [(type(item), len(item))]

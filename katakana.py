@@ -31,9 +31,9 @@ def main():
     
     
 
-    print("=>c032:")
+    print("=>train_images[0]")
     print(train_images[0])
-    print("=>noisy_c032:")
+    print("=>test_images[0][0]:")
     print(test_images[0][0])
     
     
@@ -41,6 +41,8 @@ def main():
     
     # No of neurons
     n_neurons = get_pattern_length()
+    print("n neurons:")
+    print(n_neurons)
     W = train(n_neurons, train_images)
     
     # Test
@@ -79,7 +81,7 @@ def train(neu, training_data):
 #            print(row)
 #            print("--------------")
     # FIXME harcode!
-    return w/4096
+    return w/neu
 
 
 # Function to test the network

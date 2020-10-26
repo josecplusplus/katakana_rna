@@ -19,6 +19,8 @@ from load_data import get_test_set
 from load_data import get_pattern_length
 from load_data import flatten
 
+import network
+
 def main():
 
     #Debug
@@ -44,17 +46,19 @@ def main():
     n_neurons = get_pattern_length()
     print("n neurons:")
     print(n_neurons)
-    W = train(n_neurons, train_images)
-    
-    # Test
-    print("[LOG] Testing -         " , datetime.datetime.now())    
- 
-    test_set = get_test_set()
-    accuracy, op_imgs = test(W, test_set)
+    #W = train(n_neurons, train_images)
+    # Create Hopfield Network Model
+    model = network.HopfieldNetwork()
+    model.train_weights(train_images)
 
-    # Resultados
-    print("[LOG] La precision de la red es %f" % (accuracy * 100))
-    return
+
+    predicted = model.predict(test_images, threshold=0, asyn=False)
+    print("Show prediction results...")
+    plot(train_images, test_images, predicted)
+    print("Show network weights matrix...")
+    model.plot_weights()
+    
+    exit(0)
 
        
 
@@ -144,6 +148,37 @@ def display(pattern):
     from pylab import imshow, cm, show
     imshow(pattern.reshape((64,64)),cmap=cm.binary, interpolation='nearest')
     show()
+
+
+
+def plot(data, test, predicted, figsize=(5, 6)):
+    data = [reshape(d) for d in data]
+    test = [reshape(d) for d in test]
+    predicted = [reshape(d) for d in predicted]
+
+    fig, axarr = plt.subplots(len(data), 3, figsize=figsize)
+    for i in range(len(data)):
+        if i==0:
+            axarr[i, 0].set_title('Train data')
+            axarr[i, 1].set_title("Input data")
+            axarr[i, 2].set_title('Output data')
+
+        axarr[i, 0].imshow(data[i])
+        axarr[i, 0].axis('off')
+        axarr[i, 1].imshow(test[i])
+        axarr[i, 1].axis('off')
+        axarr[i, 2].imshow(predicted[i])
+        axarr[i, 2].axis('off')
+
+    plt.tight_layout()
+    plt.savefig("result.png")
+    plt.show()
+
+
+def reshape(data):
+    dim = int(np.sqrt(len(data)))
+    data = np.reshape(data, (dim, dim))
+    return data
 
 if __name__ == "__main__":
     try: 

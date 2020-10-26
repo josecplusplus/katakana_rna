@@ -1,2 +1,1 @@
-Trabajo práctico Inteligencia Artificial
-Grupo 4
+Trabajo práctico Inteligencia Artificial - UTN FRBA - Grupo 4

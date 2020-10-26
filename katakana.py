@@ -146,7 +146,7 @@ def check(item):
 
 def display(pattern):
     from pylab import imshow, cm, show
-    imshow(pattern.reshape((64,64)),cmap=cm.binary, interpolation='nearest')
+    imshow(pattern.reshape((72,72)),cmap=cm.binary, interpolation='nearest')
     show()
 
 

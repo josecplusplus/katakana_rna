@@ -2,8 +2,8 @@ from PIL import Image
 import numpy as np
 import os
 
-train_path = "./bitmaps/train/"
-test_path = "./bitmaps/test/"
+train_path = "./bitmaps/train_128x128/"
+test_path = "./bitmaps/test_128x128/"
 
 
 test_images = []
@@ -47,7 +47,7 @@ def load_from_disk(path, images_array):
     
     
 def get_pattern_length():
-    return (64*64)
+    return (128*128)
 
 def flatten(m):
     flat_pattern = []

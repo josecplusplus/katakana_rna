@@ -15,7 +15,7 @@ class HopfieldNetwork(object):
         print("Start to train weights...")
         num_data =  len(train_data)
         #JOSE self.num_neuron = train_data[0].shape[0]
-        self.num_neuron = 4096
+        self.num_neuron = 128*128
         
         # initialize weights
         W = np.zeros((self.num_neuron, self.num_neuron))

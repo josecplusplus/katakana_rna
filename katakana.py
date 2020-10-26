@@ -11,6 +11,7 @@ import os
 from tqdm import tqdm
 import seaborn as sns
 
+import winsound
 
 from load_data import init_train_images
 from load_data import init_test_images
@@ -102,15 +103,17 @@ def test(weights, testing_data):
         if np.array_equal(true_data, predicted_data):
             success += 1.0
             print("+Eureka!")
+            winsound.Beep(1000, 1000)
         else:
             print("-Failed");
+            winsound.Beep(300, 2000)
         output_data.append([true_data, noisy_data, predicted_data])
 
     return (success / len(testing_data)), output_data
         
 
 # Function to retrieve individual noisy patterns
-def retrieve_pattern(weights, pattern, steps=10):
+def retrieve_pattern(weights, pattern, steps=1000):
     #res = flatten(pattern)
     res = pattern
 
